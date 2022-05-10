@@ -1,0 +1,7 @@
+
+<app-cabecalho-cli></app-cabecalho-cli>
+
+<main>
+  <app-livro-inserir-cli (inserirLivro)="onAdicionarLivro($event)"></app-livro-inserir-cli>
+  <app-livro-lista-cli [livros]="livros"></app-livro-lista-cli>
+</main>

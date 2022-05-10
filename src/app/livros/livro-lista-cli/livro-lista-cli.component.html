@@ -1,0 +1,21 @@
+
+<mat-accordion *ngIf="livros.length>0">
+  <div class="col-12">
+    <mat-expansion-panel class="col-6"*ngFor="let livro of livros">
+      <mat-expansion-panel-header>
+      <mat-panel-title>
+        <p>{{livro.titulo}}</p>
+      </mat-panel-title>
+      <mat-panel-description>
+        <p>{{livro.autor}}</p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <p>Indentificador: {{livro.id}}</p>
+    <p>Número de páginas: {{livro.numPaginas}}</p>
+  </mat-expansion-panel>
+</div>
+</mat-accordion>
+
+<div class="alert alert-danger text-center" *ngIf="livros.length<=0">
+  Não há livros inseridos na biblioteca
+</div>
