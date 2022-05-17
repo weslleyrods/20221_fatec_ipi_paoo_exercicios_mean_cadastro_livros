@@ -1,8 +1,7 @@
 import { Component, EventEmitter, Output} from '@angular/core';
 import { NgModule } from '@angular/core';
 import {MatInputModule} from '@angular/material/input';  //só
-
-
+import { LivroService } from '../livro.service';
 
 @Component({
   selector: 'app-livro-inserir-cli',
@@ -11,8 +10,7 @@ import {MatInputModule} from '@angular/material/input';  //só
 })
 export class LivroInserirCliComponent{
 
-  @Output()
-  inserirLivro = new EventEmitter();
+constructor(private livroService: LivroService){}
 
   id: number = 0;
   titulo: string;
@@ -27,7 +25,7 @@ export class LivroInserirCliComponent{
         autor: this.autor,
         numPaginas: this.numPaginas
       }
-      this.inserirLivro.emit(livro);
+      this.livroService.adicionarLivro(livro);
     }
   }
 }
