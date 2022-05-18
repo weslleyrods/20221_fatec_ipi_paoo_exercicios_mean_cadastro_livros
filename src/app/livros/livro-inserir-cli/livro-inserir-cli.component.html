@@ -1,6 +1,5 @@
-
-
-  <mat-card class="container-fluid">
+<mat-card class="container-fluid">
+  <form (submit)="onAdicionarLivro(form) " #form="ngForm">
     <div class="row">
       <mat-form-field appearance="standard">
         <mat-label>Título do livro</mat-label>
@@ -9,49 +8,50 @@
           matInput
           type="text"
           required
-          [(ngModel)]="titulo"
-          required
-          >
+          name="titulo" ngModel
+          #tituloInput
+          required>
         </div>
-        <button *ngIf="titulo" matSuffix mat-icon-button (click)="titulo=''">
+        <button *ngIf="tituloInput.value" matSuffix mat-icon-button (click)="tituloInput.value=''">
           <mat-icon>clear</mat-icon>
         </button>
         <mat-error>Digite o titulo do livro!</mat-error>
-    </mat-form-field>
-  </div>
-  <div class="row">
-    <mat-form-field appearance="standard">
-      <mat-label>Nome do autor</mat-label>
-      <input
-      matInput
-      type="text"
-      required
-      [(ngModel)]="autor"
-      >
-      <button *ngIf="autor" matSuffix mat-icon-button (click)="autor=''">
-        <mat-icon>clear</mat-icon>
-      </button>
-      <mat-error>Digite o nome do autor!</mat-error>
-    </mat-form-field>
-  </div>
-  <div class="row">
-    <mat-form-field appearance="standard">
-      <mat-label>Número de páginas</mat-label>
-      <input
-      matInput
-      type="text"
-      required
-      [(ngModel)]="numPaginas"
-      >
-      <button *ngIf="numPaginas" matSuffix mat-icon-button (click)="numPaginas=''">
-        <mat-icon>clear</mat-icon>
-      </button>
-      <mat-error>Digite o número de páginas!</mat-error>
-    </mat-form-field>
-  </div>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="standard">
+        <mat-label>Nome do autor</mat-label>
+        <input
+        matInput
+        type="text"
+        required
+        name="autor" ngModel
+        #autorInput
+        required>
+        <button *ngIf="autorInput.value" matSuffix mat-icon-button (click)="autorInput.value=''">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <mat-error>Digite o nome do autor!</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="row">
+      <mat-form-field appearance="standard">
+        <mat-label>Número de páginas</mat-label>
+        <input
+        matInput
+        type="text"
+        required
+        name="numPaginas" ngModel
+        #numPaginasInput>
+        <button *ngIf="numPaginasInput.value" matSuffix mat-icon-button (click)="numPaginasInput.value=''">
+          <mat-icon>clear</mat-icon>
+        </button>
+        <mat-error>Digite o número de páginas!</mat-error>
+      </mat-form-field>
+    </div>
 
-  <div class="d-grid col-6 offset-3">
-    <button mat-raised-button color="accent"(click)="onAdicionarLivro()">Inserir</button>
-  </div>
-  </mat-card>
-
+    <div class="d-grid col-6 offset-3">
+      <button  mat-raised-button color="accent">Inserir</button>
+    </div>
+  </form>
+</mat-card>

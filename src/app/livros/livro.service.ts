@@ -1,9 +1,16 @@
+import {Subject} from 'rxjs';
+import { Livro } from './livro.model';
 
 export class LivroService {
-    private livros = [];
+    private livros: Livro[] = [];
+    private livrosAtualizada = new Subject();
 
     getLivros() {
         return [...this.livros];
+    }
+
+    getLivroAtualizadaObserver() {
+      return this.livrosAtualizada.asObservable();
     }
 
     adicionarLivro({id, titulo, autor, numPaginas}): void{
@@ -11,6 +18,7 @@ export class LivroService {
         this.livros.push({
           id, titulo, autor, numPaginas
         })
+        this.livrosAtualizada.next([...this.livros]);
         /*
         const livro = {
             titulo,

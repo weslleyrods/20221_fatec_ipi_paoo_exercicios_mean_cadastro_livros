@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Livro } from './livros/livro.model';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'angular-cadastro-livros';
 
-  livros = [];
+  livros: Livro[] = [];
 
   onAdicionarLivro(livro){
     console.log(livro);
