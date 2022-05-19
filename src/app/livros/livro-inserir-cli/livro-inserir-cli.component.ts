@@ -23,6 +23,8 @@ constructor(private livroService: LivroService){}
         numPaginas: form.value.numPaginas,
       }
       this.livroService.adicionarLivro(livro);
+
+    form.resetForm();
     }
   }
 }

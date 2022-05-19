@@ -20,6 +20,6 @@ private inscricaoLivroSubscription: Subscription;
   }
 
   ngOnDestroy(){
-this.inscricaoLivroSubscription.unsubscribe();
+  this.inscricaoLivroSubscription.unsubscribe();
   }
 }
