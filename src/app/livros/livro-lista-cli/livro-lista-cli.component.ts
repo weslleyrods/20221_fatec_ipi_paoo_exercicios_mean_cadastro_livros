@@ -16,7 +16,9 @@ private inscricaoLivroSubscription: Subscription;
 
   ngOnInit():void{
     this.livros = this.livroService.getLivros();
-    this.inscricaoLivroSubscription = this.livroService.getLivroAtualizadaObserver().subscribe((novaLista: Livro[]) => this.livros = novaLista);
+    this.inscricaoLivroSubscription = this.livroService
+    .getLivroAtualizadaObserver()
+    .subscribe((novaLista: Livro[]) => this.livros = novaLista);
   }
 
   ngOnDestroy(){

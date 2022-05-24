@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 import { CabecalhoCliComponent } from './cabecalho-cli/cabecalho-cli.component';
 import { LivroInserirCliComponent } from './livros/livro-inserir-cli/livro-inserir-cli.component';
@@ -29,6 +31,7 @@ import { LivroService } from './livros/livro.service';
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
 
     MatButtonModule,
     MatCardModule,
@@ -38,7 +41,7 @@ import { LivroService } from './livros/livro.service';
     MatInputModule,
     MatToolbarModule,
   ],
-  providers: [LivroService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
