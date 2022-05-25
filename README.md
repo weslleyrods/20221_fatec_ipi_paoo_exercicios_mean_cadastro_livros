@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
 </head>
 
-# Exercício 01 e 02 MEAN
+# Exercício 01, 02 e 03 MEAN
 
 ## Integrantes
 
