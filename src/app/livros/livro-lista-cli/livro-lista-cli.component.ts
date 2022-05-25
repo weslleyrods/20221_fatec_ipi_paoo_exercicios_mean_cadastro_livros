@@ -8,6 +8,7 @@ import { LivroService } from'../livro.service';
   templateUrl: './livro-lista-cli.component.html',
   styleUrls: ['./livro-lista-cli.component.css']
 })
+
 export class LivroListaCliComponent implements OnInit, OnDestroy {
 private inscricaoLivroSubscription: Subscription;
   constructor(private livroService: LivroService) {}
@@ -15,13 +16,15 @@ private inscricaoLivroSubscription: Subscription;
   livros: Livro[] = [];
 
   ngOnInit():void{
-    this.livros = this.livroService.getLivros();
     this.inscricaoLivroSubscription = this.livroService
     .getLivroAtualizadaObserver()
     .subscribe((novaLista: Livro[]) => this.livros = novaLista);
+
+    this.livroService.getLivros();
   }
 
   ngOnDestroy(){
-  this.inscricaoLivroSubscription.unsubscribe();
+    this.inscricaoLivroSubscription.unsubscribe();
   }
 }
+
