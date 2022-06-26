@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const Livro = require('./models/livro')
 const { addAbortSignal } = require('stream')
 app.use(cors())
 
@@ -61,11 +62,11 @@ mongoose.connect(`mongodb+srv://${MONGODB_USER}:${MONGODB_PASSWORD}@${MONGODB_CL
 //POST ->criação de novos dados
 app.post('/api/livros', (req, res) => {
   //livros.push({ ...req.body, id: id++ })
-  const livro = new livro({
+  const livro = new Livro({
     //...req.body
-    nome,
-    pagina,
-    autor,
+    titulo: req.body.titulo,
+    autor: req.body.autor,
+    numPaginas: req.body.numPaginas
   })
   console.log(livro);
   livro.save()
@@ -81,9 +82,10 @@ app.post('/api/livros', (req, res) => {
 
 app.get('/api/livros', (req, res) => {
   Livro.find().then(documents => {
+    console.log(documents);
     res.status(200).json({
       mensagem: "Tudo Ok",
-      livro: documents
+      livros: documents
     });
   })
 });

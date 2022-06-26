@@ -1,10 +1,10 @@
-const mongoose = require ("mongoose")
+const mongoose = require("mongoose")
 
 //livro: nome, pagina e autor
 const livroSchema = mongoose.Schema ({
-    nome:{ type: String, required: true},
-    pagina: { type: String, required: true},
-    autor: { type: String, requered: true}
+    titulo:{ type: String, required: true},
+    autor: { type: String, required: true},
+    numPaginas: { type: String, required: true}
 })
 
-module.exports = mongoose.Model("Livro", livroSchema);
+module.exports = mongoose.model("Livro", livroSchema);
