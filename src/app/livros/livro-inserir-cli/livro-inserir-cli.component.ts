@@ -12,12 +12,10 @@ export class LivroInserirCliComponent{
 
 constructor(private livroService: LivroService){}
 
-  id: number = 0;
 
   onAdicionarLivro(form: NgForm){
     if (!form.invalid){
       const livro = {
-        id: ++this.id,
         titulo: form.value.titulo,
         autor: form.value.autor,
         numPaginas: form.value.numPaginas,

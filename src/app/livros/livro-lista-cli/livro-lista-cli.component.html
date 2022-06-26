@@ -10,8 +10,10 @@
         <p>{{livro.autor}}</p>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <p>Indentificador: {{livro.id}}</p>
     <p>Número de páginas: {{livro.numPaginas}}</p>
+    <mat-action-row>
+      <button mat-raised-button color="warn" (click)="onDelete(livro.id)">Deletar</button>
+    </mat-action-row>
   </mat-expansion-panel>
 </div>
 </mat-accordion>

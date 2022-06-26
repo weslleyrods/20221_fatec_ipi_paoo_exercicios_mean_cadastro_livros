@@ -1,4 +1,4 @@
-import { Subject } from 'rxjs';
+import { Subject, map } from 'rxjs';
 import { Livro } from './livro.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -17,37 +17,57 @@ export class LivroService {
     // }
 
     getLivros(): void{
-      this.httpClient.get<{livros: Livro[]}>
+      this.httpClient.get<{mensagem: string, livros: any}>
       ('http://localhost:3000/api/livros')
+      .pipe(map( (dados) => {
+          return dados.livros.map((livro) =>{
+            return {
+              id: livro._id,
+              titulo: livro.titulo,
+              autor: livro.autor,
+              numPaginas: livro.numPaginas
+            }
+          })
+      }))
       .subscribe((dados) =>{
-        this.livros = dados.livros
+        this.livros = dados
         this.livrosAtualizada.next([...this.livros])
       })
     }
-    
+
     getLivroAtualizadaObserver() {
       return this.livrosAtualizada.asObservable();
     }
-
-    adicionarLivro({id, titulo, autor, numPaginas}): void{
+    adicionarLivro({ titulo, autor, numPaginas}): void{
       interface retornoLivro {
-        mensagem: string
+        mensagem: string,
+        id: string
       }
       this.httpClient.post<retornoLivro>
-        ('http://localhost:3000/api/livros',
-        {id, titulo, autor, numPaginas}
-        )
+        ('http://localhost:3000/api/livros', {titulo, autor, numPaginas})
       .subscribe((dados)=>{
       console.log(dados.mensagem);
       this.livros.push({
-        id, titulo, autor, numPaginas
+        id: dados.id,
+        titulo,
+        autor,
+        numPaginas
       })
       this.livrosAtualizada.next([...this.livros])
       })
     }
 
-    // adicionarLivro({id, titulo, autor, numPaginas}): void {
+    deleteLivro(id: string) {
+      this.httpClient.delete<{mensagem: string}>(`http://localhost:3000/api/livros/${id}`)
+      .subscribe(dados => {
+        console.log(dados.mensagem);
+        this.livros.filter(livro => livro.id !== id);
+        this.livrosAtualizada.next([...this.livros]);
+      })
 
+    }
+
+    // adicionarLivro({id, titulo, autor, numPaginas}): void {
     //     console.log("adicionando...");
     //     this.livros.push({
     //       id, titulo, autor, numPaginas

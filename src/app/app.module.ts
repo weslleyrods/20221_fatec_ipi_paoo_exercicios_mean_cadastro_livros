@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatToolbarModule } from '@angular/material/toolbar';
 
 import { LivroService } from './livros/livro.service';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,8 @@ import { LivroService } from './livros/livro.service';
     CabecalhoCliComponent
   ],
   imports: [
+    AppRoutingModule,
+
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

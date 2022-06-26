@@ -11,7 +11,7 @@ import { LivroService } from'../livro.service';
 
 export class LivroListaCliComponent implements OnInit, OnDestroy {
 private inscricaoLivroSubscription: Subscription;
-  constructor(private livroService: LivroService) {}
+constructor(private livroService: LivroService) {}
 
   livros: Livro[] = [];
 
@@ -26,5 +26,8 @@ private inscricaoLivroSubscription: Subscription;
   ngOnDestroy(){
     this.inscricaoLivroSubscription.unsubscribe();
   }
-}
 
+  onDelete(id: string) {
+    this.livroService.deleteLivro(id);
+  }
+}

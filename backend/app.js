@@ -10,7 +10,7 @@ app.use(cors())
 //permite que o body da requisição http receba um objeto json
 app.use(express.json())
 
-let id = 3;
+// let id = 3;
 
 
 const {
@@ -90,5 +90,16 @@ app.get('/api/livros', (req, res) => {
   })
 });
 
-module.exports = app
+app.delete('/api/livros/:id', (req, res)=>{
+  let id = req.params.id
+  console.log(id);
+  Livro.deleteOne({_id: id})
+  .then((docRemovido)=>{
+    console.log(docRemovido);
+    res.status(200).json({
+    mensagem: "Livro deletado"
+    })
+  })
+})
 
+module.exports = app

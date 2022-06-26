@@ -1,11 +1,9 @@
 :host {
-  width: 70%;
+  width: 50%;
   margin: 1rem;
 }
 
 mat-expansion-panel {
-  display: inline-block;
-  width:40%;
-  margin-left: 5%;
-  margin-right: 5%;
+  margin: 5px;
+  width: 100%;
 }
